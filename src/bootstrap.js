@@ -5,8 +5,9 @@ import { createStore, applyMiddleware } from "redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/home";
 import reducers from "./reducers";
+import thunk from "redux-thunk";
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 import "./style/main.scss";
 import { SpeciesFinderLayout } from "./components/species_finder";
