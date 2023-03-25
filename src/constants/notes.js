@@ -57,4 +57,7 @@ const NOTE_TO_KEY = {
     b1p: "7",
     b1: "u",
 }
-export { NOTES, KEY_TO_NOTE, NOTE_TO_KEY };
+
+const VALID_KEYS = [ 'z', 's', 'x', 'd', 'c', 'v', 'g', 'b', 'h', 'n', 'j', 'm', 'q', '2', 'w', '3', 'e', 'r', '5', 't', '6', 'y', '7', 'u']
+
+export { NOTES, KEY_TO_NOTE, NOTE_TO_KEY, VALID_KEYS };

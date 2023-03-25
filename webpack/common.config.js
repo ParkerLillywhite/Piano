@@ -35,6 +35,14 @@ module.exports = {
         test: /\.(mp4|webm)$/,
         loader: 'url?limit=10000',
       },
+
+      {
+        test: /\.mp3$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      },
     ],
   },
 

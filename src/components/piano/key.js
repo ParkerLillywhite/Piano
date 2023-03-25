@@ -11,7 +11,7 @@ function noteIsFlatChecker(note) {
 
 
 function keyIsPressedChecker(note, pressedKeys){
-    return _.includes(pressedKeys, note);
+    return _.includes(pressedKeys, NOTE_TO_KEY[note]);
     
 }
 
