@@ -1,10 +1,11 @@
 import React from "react";
 import Key from './key';
-import { KEY_TO_NOTE, NOTES, VALID_KEYS } from '../../constants/notes';
-import { sound } from '../../../static/assets/b.mp3';
+import { KEY_TO_NOTE, NOTES, VALID_KEYS } from '../../constants/piano/notes';
+import { DropDown, DropDownMenu } from '../dropDown';
 
 import './piano.css';
 import _ from "lodash";
+
 
 //current bug dealing with the handle up reasing all current pressed keys.
 
@@ -12,7 +13,8 @@ class Piano extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pressedKeys: []
+            pressedKeys: [],
+
         };
     }
     
@@ -23,7 +25,7 @@ class Piano extends React.Component {
 
     playNote = (note) => {
         if(!_.isEmpty(note)) {
-            const noteAudio = new Audio(window.location.origin + '/assets/b.mp3');
+            const noteAudio = new Audio(window.location.origin + '/assets/pianoNotes/' + note + '.mp3');
             noteAudio.play();
         }
     }
@@ -79,21 +81,14 @@ class Piano extends React.Component {
             )
         })
 
-        const soundTest = () => {
-            try {
-                let audio = new Audio(window.location.origin + '/assets/b.mp3');
-                audio.play();
-                console.log('play audio');
-            } catch (error) {
-                console.log("failed to play sound: " + error);
-            }
-
-        }
-        
-
+    
         return(
-            <div>
-                <button onClick={soundTest}>play sound</button>
+            <div className="piano-container">
+                <div className="options-bar">
+                    <DropDown icon={"x"}>
+                        <DropDownMenu />
+                    </DropDown>
+                </div>
                 <div className="piano">
                     {keys}
                 </div>

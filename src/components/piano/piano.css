@@ -1,4 +1,19 @@
 .piano { 
     display: flex;
     flex-direction: row;
+    z-index: -1;
+}
+
+.piano-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.options-bar {
+    position: relative;
+    transform: translateZ(1px);
+    transform: translateY(-76px);
+
 }

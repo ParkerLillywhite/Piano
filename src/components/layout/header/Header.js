@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 
+import './header.css'
+
 const Header = () => {
 
     let history = useHistory();
@@ -10,15 +12,21 @@ const Header = () => {
 
 
     return(
-        <div className="headerContainer">
-            <div className="navButtons">
-                <button className="homeButton" onClick={() => changeRoute('/')}>
-                    Home
-                </button>
-                <button className='searchButton' onClick={() => changeRoute('search')}>
-                    Search
-                </button>
-            </div>
+        <NavBar>            
+            <button className="homeButton" onClick={() => changeRoute('/')}>
+                Home
+            </button>
+            <button className='searchButton' onClick={() => changeRoute('search')}>
+                Search
+            </button>
+        </NavBar>
+    )
+}
+
+function NavBar(props) {
+    return(
+        <div className="navbar">
+            <ul className="navbar-nav"> {props.children} </ul>
         </div>
     )
 }

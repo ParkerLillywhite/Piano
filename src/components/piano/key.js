@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import './key.css';
 
-import { NOTE_TO_KEY } from '../../constants/notes';
+import { NOTE_TO_KEY } from '../../constants/piano/notes';
 
 function noteIsFlatChecker(note) {
     return note.includes("p");
