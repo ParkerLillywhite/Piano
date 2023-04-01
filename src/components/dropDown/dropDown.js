@@ -13,10 +13,6 @@ function DropDown(props) {
 
     const [ open, setOpen ] = useState(false);
 
-    const state = useSelector((state) => state.instruments);
-
-    const instrumentClone = cloneDeep(state);
-
     return(
         <div className="drop-down-list">
             <div className="drop-down-first-item">
@@ -24,9 +20,7 @@ function DropDown(props) {
                 {props.icon}
                 </a>
                 <div className="selected-option">
-                    {console.log(instrument)}
-                    {console.log(instrumentClone)}
-                     current instrument: {instrument}
+                     Instrument: {instrument}
                 </div>
             </div>
             

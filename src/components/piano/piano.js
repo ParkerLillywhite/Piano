@@ -2,6 +2,7 @@ import React from "react";
 import Key from './key';
 import { KEY_TO_NOTE, NOTES, VALID_KEYS } from '../../constants/piano/notes';
 import { DropDown, DropDownMenu } from '../dropDown';
+import { connect } from 'react-redux';
 
 import './piano.css';
 import _ from "lodash";
@@ -14,7 +15,7 @@ class Piano extends React.Component {
         super(props);
         this.state = {
             pressedKeys: [],
-
+            
         };
     }
     
@@ -24,8 +25,9 @@ class Piano extends React.Component {
     }
 
     playNote = (note) => {
+        const  { instrument } = this.props;
         if(!_.isEmpty(note)) {
-            const noteAudio = new Audio(window.location.origin + '/assets/pianoNotes/' + note + '.mp3');
+            const noteAudio = new Audio(window.location.origin + '/assets/' + this.changeInstrumentToNoteType(instrument) + '/' + note + '.mp3');
             noteAudio.play();
         }
     }
@@ -59,8 +61,16 @@ class Piano extends React.Component {
         })
     }
 
-    
-    
+    changeInstrumentToNoteType = (instrument) => {
+        switch(instrument){
+            case 'Piano':
+                return 'pianoNotes';
+            case 'Marimba': 
+                return 'marimbaNotes';
+            case 'Guitar':
+                return 'guitarNotes';
+        }
+    }
 
     render(){
         const audioFiles = _.map(NOTES, (note, index) => {
@@ -101,4 +111,9 @@ class Piano extends React.Component {
     }
 }
 
-export default Piano;
+function mapStateToProps(state) {
+    const instrument = state.instruments.instrument;
+    return {instrument};
+}
+
+export default connect(mapStateToProps)(Piano);
