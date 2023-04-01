@@ -12,7 +12,7 @@ function DropDownMenu() {
 
         return(
             <a href="#" className="drop-down-item"
-            onClick={() => {dispatch(props.instrument), console.log(state)}}>
+            onClick={() => {dispatch(props.instrument)}}>
                 {props.children}
             </a>
         )

@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/home";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
+import store from './store';
 
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -15,7 +16,7 @@ import { SpeciesFinderLayout } from "./components/species_finder";
 
 function main() {
   ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route path='/' exact component={Home}/>

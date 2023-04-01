@@ -4,8 +4,9 @@ import { reducer as form } from 'redux-form';
 import  instrumentReducer  from './selectedInstrument';
 
 const rootReducer = combineReducers({
-  form,
-  instrumentReducer
+
+  instruments: instrumentReducer
 });
+
 
 export default rootReducer;

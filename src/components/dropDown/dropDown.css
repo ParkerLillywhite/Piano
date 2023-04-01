@@ -76,7 +76,13 @@ a {
     background-color: var(--hover-color);
 }
 
+.drop-down-first-item {
+    display: flex;
+}
+
 .selected-option{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    color: white;
+    padding-top: 7px;
+    padding-left: 7px;
 }
