@@ -4,25 +4,34 @@ import { piano, marimba, guitar } from '../../actions/pianoAction';
 
 import './dropDown.css'
 
-function DropDownMenu() {
+function DropDownMenu({changeOpenStatus}) {
 
-    function DropDownItem(props){
+    function DropDownItem({changeOpenstatus, ...props }){
         const state = useSelector((state) => state);
         const dispatch = useDispatch();
-
+        
         return(
             <a href="#" className="drop-down-item"
-            onClick={() => {dispatch(props.instrument)}}>
+            onClick={() => {
+                dispatch(props.instrument),
+                changeOpenStatus(false);
+
+            }}>
                 {props.children}
             </a>
         )
     }
 
+    const closeMenu = () => {
+        changeOpenStatus(false);
+    }
+
     return(
-        <div className="drop-down-menu">
+        <div className="drop-down-menu" >
             <DropDownItem instrument={piano()} >Piano</DropDownItem>
             <DropDownItem instrument={marimba()} >Marimba</DropDownItem>
             <DropDownItem instrument={guitar()} >Guitar</DropDownItem>
+            <button onClick={() => changeOpenStatus(false)}>click here</button>
 
         </div>
     )

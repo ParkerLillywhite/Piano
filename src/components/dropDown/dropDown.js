@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import { DropDownMenu } from ".";
 import  cloneDeep from 'lodash/cloneDeep';
 
 
@@ -9,10 +10,16 @@ import './dropDown.css';
 
 function DropDown(props) {
 
-    const { instrument } = props;
+    const { 
+        instrument,
+     } = props;
 
     const [ open, setOpen ] = useState(false);
-
+    
+    function changeOpenStatus(){
+        setOpen(!open);
+        console.log('clicked');
+    }
     return(
         <div className="drop-down-list">
             <div className="drop-down-first-item">
@@ -24,7 +31,7 @@ function DropDown(props) {
                 </div>
             </div>
             
-            {open && props.children}
+            {open && <DropDownMenu changeOpenStatus={setOpen}/>}
         </div>
     )
 }

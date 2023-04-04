@@ -96,7 +96,7 @@ class Piano extends React.Component {
             <div className="piano-container">
                 <div className="options-bar">
                     <DropDown icon={"x"}>
-                        <DropDownMenu />
+                        
                     </DropDown>
                 </div>
                 <div className="piano">
