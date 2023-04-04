@@ -16,10 +16,6 @@ function DropDown(props) {
 
     const [ open, setOpen ] = useState(false);
     
-    function changeOpenStatus(){
-        setOpen(!open);
-        console.log('clicked');
-    }
     return(
         <div className="drop-down-list">
             <div className="drop-down-first-item">
