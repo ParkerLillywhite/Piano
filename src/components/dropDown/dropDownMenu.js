@@ -31,8 +31,6 @@ function DropDownMenu({changeOpenStatus}) {
             <DropDownItem instrument={piano()} >Piano</DropDownItem>
             <DropDownItem instrument={marimba()} >Marimba</DropDownItem>
             <DropDownItem instrument={guitar()} >Guitar</DropDownItem>
-            <button onClick={() => changeOpenStatus(false)}>click here</button>
-
         </div>
     )
 }
