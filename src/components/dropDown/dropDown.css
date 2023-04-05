@@ -43,6 +43,13 @@ a {
     
 }
 
+.icon-button-svg {
+    --svg-size: calc(var(--nav-size) * 0.4);
+    width: var(--svg-size);
+    height: var(--svg-size);
+    color: white;
+}
+
 .icon-button:hover {
     background-color: #00d8ff;
 }

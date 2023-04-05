@@ -3,16 +3,11 @@ import Key from './key';
 import { KEY_TO_NOTE, NOTES, VALID_KEYS } from '../../constants/piano/notes';
 import { DropDown, DropDownMenu } from '../dropDown';
 import { connect } from 'react-redux';
-import { ReactComponent as DropDownCaret } from '../../../static/assets/svg/caret-down-solid.svg';
-import { FontAwesomeIcon } from '@fortAwesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/fontawesome-free-solid';
+import DropDownCaret from '../../../static/assets/svg/drop.svg';
 
 import './piano.css';
 import _ from "lodash";
 
-fontawesome.library.add(faCaretDown);
-
-//current bug dealing with the handle up reasing all current pressed keys.
 
 class Piano extends React.Component {
     constructor(props) {
@@ -99,9 +94,7 @@ class Piano extends React.Component {
         return(
             <div className="piano-container">
                 <div className="options-bar">
-                    <DropDown icon={<FontAwesomeIcon icon="fa-solid fa-caret-down" />}>
-                        
-                    </DropDown>
+                    <DropDown />
                 </div>
                 <div className="piano">
                     {keys}
