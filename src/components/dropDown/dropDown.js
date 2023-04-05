@@ -17,16 +17,34 @@ function DropDown(props) {
      } = props;
 
     const [ open, setOpen ] = useState(false);
+    const [ rotate, setRotate ] = useState("");
+    
+    useEffect(() => {
+        handleRotate()
+    });
+
+    function handleRotate() {
+        if(open){
+            setRotate("-rotate");
+        } else {
+            setRotate("");
+        }
+    }
     
     return(
         <div className="drop-down-list">
             <div className="drop-down-first-item">
-                <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
-                    <img 
-                        className="icon-button-svg"
-                        src={DropDownCaret}
-                        alt="Drop Down Caret"
-                    />
+                <a 
+                    href="#" 
+                    className="icon-button" 
+                    onClick={() =>
+                     setOpen(!open)
+                    }>
+                        <img 
+                            className={`icon-button-svg${rotate}`}  
+                            src={DropDownCaret}
+                            alt="Drop Down Caret"
+                        />
 
                 
                 </a>

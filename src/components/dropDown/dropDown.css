@@ -48,6 +48,17 @@ a {
     width: var(--svg-size);
     height: var(--svg-size);
     color: white;
+    transition: transform 300ms;
+    transform: rotate(0);
+}
+
+.icon-button-svg-rotate {
+    --svg-size: calc(var(--nav-size) * 0.4);
+    width: var(--svg-size);
+    height: var(--svg-size);
+    color: white;
+    transition: transform 300ms;
+    transform: rotate(-90deg);
 }
 
 .icon-button:hover {
