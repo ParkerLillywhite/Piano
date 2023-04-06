@@ -1,24 +1,28 @@
+package src.common;
+
+import java.util.Objects;
+
 public class Course {
     private int id;
-    private string name;
+    private String name;
 
     public Course(String name){
         this.name = name;
     }
 
-    public getId(){
+    public int getId(){
         return id;
     }
 
-    public setId(){
+    public void setId(int id){
         this.id = id;
     }
 
-    public getName(){
+    public String getName(){
         return name;
     }
 
-    public setName(){
+    public void setName(String name){
         this.name = name;
     }
 
@@ -26,8 +30,8 @@ public class Course {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Couse couse = (Couse) object;
-        return id == couse.id && java.util.Objects.equals(name, couse.name);
+        Course course = (Course) object;
+        return id == course.id && java.util.Objects.equals(name, course.name);
     }
 
     public int hashCode() {

@@ -1,8 +1,12 @@
+package src.common;
+
+import java.util.Objects;
+
 public class Review {
     private int id;
     private int courseId;
     private int rating;
-    private string comment;
+    private String comment;
 
     public Review(int courseId, int rating, String comment){
         this.courseId = courseId;
@@ -10,27 +14,27 @@ public class Review {
         this.comment = comment;
     }
 
-    public getCourseId(){
+    public int getCourseId(){
         return courseId;
     }
 
-    public setCourseId(){
+    public void setCourseId(int courseId){
         this.courseId = courseId;
     }
 
-    public getRating(){
+    public int getRating(){
         return rating;
     }
 
-    public setRating(){
+    public void setRating(int rating){
         this.rating = rating;
     }
 
-    public getComment(){
+    public String getComment(){
         return comment;
     }
 
-    public setComment(){
+    public void setComment(){
         this.comment = comment;
     }
 
