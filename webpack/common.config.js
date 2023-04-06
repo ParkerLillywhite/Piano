@@ -23,17 +23,12 @@ module.exports = {
 
       {
         type: 'javascript/auto',
-        test: /\.(jpg|png|gif|eot|ttf|woff|woff2)$/,
+        test: /\.(jpg|png|svg|gif|eot|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]',
           publicPath: '/',
         },
-      },
-
-      {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
       },
 
       {
