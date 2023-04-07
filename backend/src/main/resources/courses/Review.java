@@ -1,4 +1,4 @@
-package src.common;
+package src.main.resources.courses;
 
 import java.util.Objects;
 
@@ -26,7 +26,7 @@ public class Review {
         return rating;
     }
 
-    public void setRating(int rating){
+    public void setRating(){
         this.rating = rating;
     }
 
@@ -38,15 +38,16 @@ public class Review {
         this.comment = comment;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Review review = (Review) object;
-        return id == review.id && courseId == review.courseId && rating == review.rating && java.util.Objects.equals(comment, review.comment);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Review review = (Review) o;
+        return id == review.id && courseId == review.courseId && rating == review.rating && Objects.equals(comment, review.comment);
     }
 
+    @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, courseId, rating, comment);
+        return Objects.hash(id, courseId, rating, comment);
     }
 }
