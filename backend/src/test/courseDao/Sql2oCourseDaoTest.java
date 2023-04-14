@@ -1,4 +1,6 @@
-package src.test.java;
+package src.test.courseDao;
+
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,10 +8,10 @@ import org.junit.After;
 import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import src.main.resources.courses.Course;
-import src.main.resources.courses.dao.Sql2oCourseDao;
+import src.main.java.courses.Course;
+import src.main.java.courses.dao.Sql2oCourseDao;
 
-class Sql2oCourseDaoTest {
+public class Sql2oCourseDaoTest {
 
     private Sql2oCourseDao dao;
     private Connection connection;
