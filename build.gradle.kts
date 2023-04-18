@@ -10,16 +10,16 @@ repositories {
 }
 
 dependencies {
+    implementation("org.sql2o:sql2o:1.6.0")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    implementation("junit:junit:4.13.1")
+    implementation("com.h2database:h2:1.4.191")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
