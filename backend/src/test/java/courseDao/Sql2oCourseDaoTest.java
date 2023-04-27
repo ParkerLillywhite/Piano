@@ -1,4 +1,4 @@
-package src.test.courseDao;
+package courseDao;
 
 
 
@@ -24,7 +24,7 @@ public class Sql2oCourseDaoTest {
 
         dao = new Sql2oCourseDao(sql2o);
 
-        //keep connection open through the entire test so that it isnt wiped out
+        //keep connection open through the entire test so that it isn't wiped out
 
         connection = sql2o.open();
     }
@@ -35,13 +35,22 @@ public class Sql2oCourseDaoTest {
     }
 
     @Test
-    public void AddingCourseSetsId() throws Exception {
+    public void testAddingCourseSetsId() throws Exception {
         Course course = new Course("Test");
         int originalCourseId = course.getId();
 
         dao.add(course);
 
         assertNotEquals(originalCourseId, course.getId());
+    }
+
+    @Test
+    public void AddedCoursesAreReturnedFromFindAll() throws Exception {
+        Course course = new Course("Test");
+
+        dao.add(course);
+
+        assertEquals(1, dao.findAll().size());
     }
 
 

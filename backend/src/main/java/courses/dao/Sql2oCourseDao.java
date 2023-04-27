@@ -30,6 +30,10 @@ public class Sql2oCourseDao implements CourseDao {
 
     @Override
     public List<Course> findAll() {
-        return null;
+        try(Connection connection = sql2o.open()) {
+            return connection.createQuery("SELECT * FROM courses")
+                    //this returns a list of whatever class you pass in
+                    .executeAndFetch(Course.class);
+        }
     }
 }
