@@ -1,7 +1,7 @@
-package src.main.java.courses.dao;
+package courses.dao;
 
-import src.main.java.courses.exc.DaoException;
-import src.main.java.courses.Review;
+import courses.exc.DaoException;
+import courses.Review;
 
 import java.util.List;
 

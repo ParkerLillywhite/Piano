@@ -1,4 +1,4 @@
-package src.main.java.courses;
+package courses;
 
 import java.util.Objects;
 

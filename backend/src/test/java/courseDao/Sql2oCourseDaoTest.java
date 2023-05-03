@@ -8,8 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import src.main.java.courses.Course;
-import src.main.java.courses.dao.Sql2oCourseDao;
+import courses.Course;
+import courses.dao.Sql2oCourseDao;
 
 public class Sql2oCourseDaoTest {
 
@@ -36,7 +36,7 @@ public class Sql2oCourseDaoTest {
 
     @Test
     public void testAddingCourseSetsId() throws Exception {
-        Course course = new Course("Test");
+        Course course = newTestCourse();
         int originalCourseId = course.getId();
 
         dao.add(course);
@@ -46,11 +46,25 @@ public class Sql2oCourseDaoTest {
 
     @Test
     public void AddedCoursesAreReturnedFromFindAll() throws Exception {
-        Course course = new Course("Test");
+        Course course = newTestCourse();
 
         dao.add(course);
 
         assertEquals(1, dao.findAll().size());
+    }
+
+    @Test
+    public void existingCoursesCanBeFoundById() throws Exception {
+        Course course = newTestCourse();
+        dao.add(course);
+
+        Course foundCourse = dao.findById(course.getId());
+
+        assertEquals(course, foundCourse);
+    }
+
+    public Course newTestCourse() throws Exception {
+        return new Course("Test");
     }
 
 

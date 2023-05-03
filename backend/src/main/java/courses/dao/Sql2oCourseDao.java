@@ -1,8 +1,8 @@
-package src.main.java.courses.dao;
+package courses.dao;
 
 import org.sql2o.Sql2oException;
-import src.main.java.courses.Course;
-import src.main.java.courses.exc.DaoException;
+import courses.Course;
+import courses.exc.DaoException;
 import org.sql2o.Sql2o;
 import org.sql2o.Connection;
 
@@ -34,6 +34,15 @@ public class Sql2oCourseDao implements CourseDao {
             return connection.createQuery("SELECT * FROM courses")
                     //this returns a list of whatever class you pass in
                     .executeAndFetch(Course.class);
+        }
+    }
+
+    @Override
+    public Course findById(int id) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * from courses WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Course.class);
         }
     }
 }

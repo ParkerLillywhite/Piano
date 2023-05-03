@@ -1,4 +1,4 @@
-package src.main.java.courses.exc;
+package courses.exc;
 
 public class DaoException extends Exception {
 
