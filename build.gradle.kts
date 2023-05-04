@@ -24,10 +24,11 @@ dependencies {
 sourceSets{
     main{
         java.srcDirs("backend/src/main/java")
-        resources.srcDirs("AllLife/backend/src/main/resources")
+        resources.srcDirs("backend/src/main/resources")
     }
     test{
         java.srcDirs("backend/src/test/java")
+        resources.srcDirs("backend/src/test/resources")
     }
 }
 
