@@ -1,9 +1,13 @@
 package courses;
 
 import com.google.gson.Gson;
+import courses.exc.ApiException;
 import org.sql2o.Sql2o;
 import courses.dao.Sql2oCourseDao;
 import courses.dao.CourseDao;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static spark.Spark.*;
 
@@ -38,8 +42,21 @@ public class Api {
         get("/courses/:id", "application/json", (req, res) -> {
             int id = Integer.parseInt(req.params("id"));
             Course course = courseDao.findById(id);
+            if(course == null){
+                throw new ApiException(404, "Could not find course id " + id);
+            }
             return course;
         }, gson::toJson);
+
+        exception(ApiException.class, (exc, req, res) -> {
+            ApiException exception = (ApiException) exc;
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", exception.getStatus());
+            jsonMap.put("errorMessage", exception.getMessage());
+            res.type("application/json");
+            res.status(exception.getStatus());
+            res.body(gson.toJson(jsonMap));
+        });
 
         after((req, res) -> {
             res.type("application/json");

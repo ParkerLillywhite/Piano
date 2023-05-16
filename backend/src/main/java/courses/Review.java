@@ -14,11 +14,11 @@ public class Review {
         this.comment = comment;
     }
 
-    public int getCourseId(){
+    public int getId(){
         return courseId;
     }
 
-    public void setCourseId(int courseId){
+    public void setId(int courseId){
         this.courseId = courseId;
     }
 
