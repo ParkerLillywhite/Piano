@@ -20,7 +20,7 @@ public class Course {
     }
 
     public String getName(){
-        return this.name = name;
+        return name;
     }
 
     public void setName(String name){
