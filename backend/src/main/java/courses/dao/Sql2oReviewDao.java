@@ -18,7 +18,7 @@ public class Sql2oReviewDao implements ReviewDao {
 
     @Override
     public void add(Review review) throws DaoException {
-        String sqlString = "INSERT INTO reviews(course_id, rating, comment) VALUES (:courseId, rating, comment)";
+        String sqlString = "INSERT INTO reviews(course_id, rating, comment) VALUES (:courseId, :rating, :comment)";
         try (Connection connection  = sql2o.open()){
             int id = (int) connection.createQuery(sqlString)
                     .bind(review)

@@ -16,12 +16,13 @@ public class Sql2oUserDao implements UserDao{
 
     @Override
     public void add(User user) throws DaoException {
-        String sqlString = "INSERT INTO users(user_name, password) VALUES (:userName, password)";
+        String sqlString = "INSERT INTO users(user_name, password) VALUES (:userName, :passWord)";
         try(Connection connection = sql2o.open()){
             int id = (int) connection.createQuery(sqlString)
                     .bind(user)
                     .executeUpdate()
                     .getKey();
+            user.setId(id);
         } catch (Sql2oException exception) {
             throw new DaoException(exception, "Problem adding user");
         }
