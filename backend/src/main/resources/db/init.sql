@@ -10,9 +10,3 @@ CREATE TABLE IF NOT EXISTS reviews (
    comment VARCHAR,
    FOREIGN KEY(course_id) REFERENCES public.courses(id)
 );
-
-CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY auto_increment,
-    user_name VARCHAR,
-    password VARCHAR,
-);

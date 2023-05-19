@@ -10,5 +10,5 @@ public interface UserDao {
 
     List<User> findAll();
 
-    List<User> findById(int id);
+    User findById(int id);
 }

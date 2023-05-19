@@ -19,7 +19,7 @@ public class Sql2oUserDaoTest {
 
     @BeforeEach
     public void setUp(){
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/init.sql'";
+        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/user_init.sql'";
 
         Sql2o sql2o = new Sql2o(connectionString, "", "");
 
@@ -52,6 +52,17 @@ public class Sql2oUserDaoTest {
         sql2oUserDao.add(otherUser);
 
         assertEquals(2, sql2oUserDao.findAll().size());
+    }
+
+    @Test
+    public void userIsReturnedFromFindById() throws Exception {
+        User user = newTestUser();
+
+        sql2oUserDao.add(user);
+
+        User foundUser = sql2oUserDao.findById(user.getId());
+
+        assertEquals(user.getUserName(), foundUser.getUserName());
     }
 
     public User newTestUser() throws Exception {

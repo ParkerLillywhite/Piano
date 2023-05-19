@@ -16,7 +16,7 @@ public class Sql2oUserDao implements UserDao{
 
     @Override
     public void add(User user) throws DaoException {
-        String sqlString = "INSERT INTO users(user_name, password) VALUES (:userName, :passWord)";
+        String sqlString = "INSERT INTO users(username, password) VALUES (:userName, :passWord)";
         try(Connection connection = sql2o.open()){
             int id = (int) connection.createQuery(sqlString)
                     .bind(user)
@@ -37,11 +37,11 @@ public class Sql2oUserDao implements UserDao{
     }
 
     @Override
-    public List<User> findById(int id){
+    public User findById(int id){
         try(Connection connection = sql2o.open()){
             return connection.createQuery("SELECT * FROM users WHERE id = :id")
                     .addParameter("id", id)
-                    .executeAndFetch(User.class);
+                    .executeAndFetchFirst(User.class);
         }
     }
 
