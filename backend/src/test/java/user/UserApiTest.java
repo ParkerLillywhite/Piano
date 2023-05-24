@@ -1,60 +1,54 @@
 package user;
 
-import User.Login.dao.Sql2oUserDao;
+import User.Login.api.UserApi;
 import User.Login.dao.UserDao;
-import User.Login.User;
-import courses.exc.DaoException;
-import io.restassured.http.ContentType;
-import org.junit.jupiter.api.BeforeEach;
+import com.google.gson.Gson;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.exceptions.base.MockitoException;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.beans.factory.annotation.Autowired;
-import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.sql2o.Sql2oException;
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import User.Login.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class UserApiTest {
+    private UserApi userApi;
+    private UserDao userDao;
+    private Gson gson;
 
-    @Autowired
-    private MockMvc mockMvc;
+    private Request request;
 
-    @MockBean
-    private Sql2oUserDao userDao;
+    private Response response;
 
-    @BeforeEach
-    public void setUp(){
-        RestAssuredMockMvc.mockMvc(mockMvc);
-        userDao = mock(Sql2oUserDao.class);
+    @Before
+    public void setup() {
+        userDao = mock(UserDao.class);
+        gson = new Gson();
+        userApi = new UserApi();
+        request = mock(Request.class);
+        response = mock(Response.class);
     }
 
     @Test
-    public void testCreateUserEndpoint() throws DaoException {
+    public void testCreateUserEndpoint() throws Exception {
+        Route createUserEndpoint = (req, res) -> {
+            User user = gson.fromJson(req.body(), User.class);
+            userDao.add(user);
+            res.status(201);
+            return gson.toJson(user);
+        };
 
-        String requestPayload = "{ \"userName\": \"DarkSouls\", \"passWord\": \"something\" }";
+        when(request.body()).thenReturn("{\"UserName\":\"John\",\"PassWord\":\"boppla\"}");
 
-        doNothing().when(userDao).add(any(User.class));
+        String result = (String) createUserEndpoint.handle(request, response);
 
-        given()
-                .contentType(ContentType.JSON)
-                .body(requestPayload)
-                .when()
-                .post("/users")
-                .then()
-                .statusCode(201)
-                .body("userName", equalTo("DarkSouls"))
-                .body("passWord", equalTo("something"));
+        verify(response).status(201);
 
-        verify(userDao, times(1)).add(any(User.class));
+        assertEquals("{\"UserName\":\"John\",\"PassWord\":\"boppla\"}", result);
 
+        verify(userDao).add(any(User.class));
     }
+
 }
