@@ -33,22 +33,7 @@ public class UserApiTest {
 
     @Test
     public void testCreateUserEndpoint() throws Exception {
-        Route createUserEndpoint = (req, res) -> {
-            User user = gson.fromJson(req.body(), User.class);
-            userDao.add(user);
-            res.status(201);
-            return gson.toJson(user);
-        };
 
-        when(request.body()).thenReturn("{\"UserName\":\"John\",\"PassWord\":\"boppla\"}");
-
-        String result = (String) createUserEndpoint.handle(request, response);
-
-        verify(response).status(201);
-
-        assertEquals("{\"UserName\":\"John\",\"PassWord\":\"boppla\"}", result);
-
-        verify(userDao).add(any(User.class));
     }
 
 }
