@@ -5,7 +5,7 @@ import User.Login.dao.UserDao;
 import com.google.gson.Gson;
 import courses.exc.ApiException;
 import org.sql2o.Sql2o;
-import User.Login.User;
+import User.User;
 
 import static spark.Spark.port;
 import static spark.Spark.post;

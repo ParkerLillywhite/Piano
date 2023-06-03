@@ -1,6 +1,6 @@
 package User.Login.dao;
 
-import User.Login.User;
+import User.User;
 
 import java.util.List;
 

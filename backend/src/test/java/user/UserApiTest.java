@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import spark.Request;
 import spark.Response;
-import spark.Route;
-import User.Login.User;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;

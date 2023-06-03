@@ -1,7 +1,7 @@
 package user;
 
 import User.Login.dao.Sql2oUserDao;
-import User.Login.User;
+import User.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

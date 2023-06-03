@@ -3,7 +3,7 @@ package User.Login.dao;
 import courses.exc.DaoException;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import User.Login.User;
+import User.User;
 import org.sql2o.Sql2oException;
 
 import java.util.List;
